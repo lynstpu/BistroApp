@@ -1,0 +1,108 @@
+﻿<Window x:Class="BistroApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BistroApp"
+        mc:Ignorable="d"
+        Title="Bistro App" 
+        WindowState="Maximized" 
+        WindowStyle="ThreeDBorderWindow" 
+        >
+    <DockPanel LastChildFill="True">
+        <Border BorderBrush="DarkBlue" DockPanel.Dock="Bottom" BorderThickness="1">
+            <StackPanel 
+                Background="AliceBlue" 
+                Orientation="Vertical">
+                <Label 
+                    BorderBrush="AliceBlue">Status : Connected
+                </Label>
+            </StackPanel>
+        </Border>
+        <Border 
+            BorderBrush="DarkBlue" 
+            DockPanel.Dock="Left" 
+            BorderThickness="1">
+            <StackPanel Background="AliceBlue" MinWidth="160">
+                <Label 
+                    Content="Menu"
+                    FontSize="24" 
+                    Height="50" 
+                    HorizontalContentAlignment="Center" 
+                    Foreground="#FF14B0BF" 
+                    FontWeight="Bold"/>
+
+                <Button
+                    x:Name="MenuButton"
+                    Content="Menu" 
+                    Click="Menu_Click"
+                    Height="50" 
+                    Background="DarkSeaGreen" 
+                    Foreground="#FF179B9B" 
+                    FontWeight="Bold" 
+                    />
+                <Button 
+                    x:Name="OrdersButton" 
+                    Content="Orders" 
+                    Click="Order_Click"
+                    Height="50" 
+                    FontWeight="Bold" 
+                    Foreground="#FF2D9E9E" 
+                    Background="DarkSeaGreen"
+                    />
+                <Button 
+                    x:Name="TablesButton" 
+                    Content="Tables" 
+                    Click="Tables_Click"
+                    Height="50" 
+                    FontWeight="Bold" 
+                    Foreground="#FF2D9E9E" 
+                    Background="DarkSeaGreen"
+                    />
+                <Button 
+                    x:Name="GenerateBillButton" 
+                    Content="Generate Bill" 
+                    Click="GenerateBillButton_Click"
+                    Height="50" 
+                    FontWeight="Bold" 
+                    Foreground="#FF2D9E9E" 
+                    Background="DarkSeaGreen"
+                    />
+                <!--<Button Name="UpdateOrder" Content="Update Order" Height="50" FontWeight="Bold" Foreground="#FF29A2A2" Background="DarkSeaGreen"></Button>
+                <Button Name="GenerateBill" Content="Generate Bill" Height="50" FontWeight="Bold" Foreground="#FF239393" Background="DarkSeaGreen"></Button>-->
+            </StackPanel>
+        </Border>
+        <Border 
+            BorderBrush="DarkBlue" 
+            BorderThickness="1" 
+            DockPanel.Dock="Top">
+            <StackPanel 
+                Background="AliceBlue" >
+                <!--<StackPanel.Background>
+                    <ImageBrush ImageSource="F:\Restrurent-Application-WPF\Restrurent-Application-WPF\Images\banner.jpg"/>
+                </StackPanel.Background>-->
+                <Label 
+                    BorderBrush="Black"
+                    Margin="5" FontSize="24" 
+                    Width="429" 
+                    HorizontalContentAlignment="Center" 
+                    FontWeight="Bold" 
+                    Foreground="#FF25B1C7">Bistro APP
+                </Label>
+            </StackPanel>
+        </Border>
+        <Grid RenderTransformOrigin="0.499, 0.581">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="2">
+            </Grid>
+            <Frame Grid.Row="0" Name="MainFrame" NavigationUIVisibility="Hidden" Grid.RowSpan="2">
+                <Frame.Background>
+                    <ImageBrush Stretch="None" ImageSource="/Images/logo.png"/>
+                </Frame.Background>
+            </Frame>
+        </Grid>
+    </DockPanel>
+</Window>

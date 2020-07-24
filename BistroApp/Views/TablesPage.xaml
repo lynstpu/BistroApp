@@ -1,0 +1,100 @@
+﻿<Page x:Class="BistroApp.Views.TablesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BistroApp.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TablesPage"
+      Loaded="TablesPage_Loaded"
+      >
+    <Page.Resources>
+
+        <BooleanToVisibilityConverter x:Key="VisibilityConverter"/>
+
+        <Style x:Key="Itemstyle" TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick" />
+        </Style>
+    </Page.Resources>
+
+    <DockPanel LastChildFill="True">
+        <Grid RenderTransformOrigin="0.499, 0.581">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListView 
+                Grid.Row="0"
+                ItemContainerStyle="{StaticResource Itemstyle}"
+                ItemsSource="{Binding Tables}"
+                >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Table" Width="400" DisplayMemberBinding="{Binding Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Border 
+                Grid.Row="1"  
+                Padding="200, 10, 200, 10" 
+                Background="AliceBlue">
+                <StackPanel 
+                    HorizontalAlignment="Stretch" 
+                    Margin="50, 10, 50, 10"
+                    >
+                    <StackPanel Orientation="Vertical">
+                        <Label 
+                            Content="Table name:"
+                            Foreground="#FF111010" 
+                            FontWeight="Bold" />
+                        <TextBox 
+                            Text="{Binding TableName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" 
+                            BorderBrush="Black" 
+                            BorderThickness="1"  />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                               IsEnabled="{Binding AddButtonEnabled}"
+                               Command="{Binding AddNewItemCommand}"
+                               CommandParameter="{Binding ElementName=btn,Path=Content}"
+                               Margin="0, 10, 10, 0"
+                               Width="100"
+                               Content="Add New" 
+                            />
+                            <Button 
+                               IsEnabled="{Binding UpdateButtonEnabled}"
+                               Margin="0, 10, 10, 0"
+                               Width="100"
+                               Command="{Binding UpdateCommand}" 
+                               Visibility="{Binding CanModify, Converter={StaticResource VisibilityConverter}}" 
+                               Content="Update"
+                            />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button
+                               IsEnabled="{Binding DeleteButtonEnabled}"
+                               Margin="0, 10, 10, 0"
+                               Width="100"
+                               Command="{Binding DeleteCommand}" 
+                               Visibility="{Binding CanModify, Converter={StaticResource VisibilityConverter}}" 
+                               Content="Delete"
+                            />
+                            <Button
+                               IsEnabled="{Binding ClearButtonEnabled}"
+                               Margin="0, 10, 0, 0"
+                               Width="100"
+                               Content="Clear"
+                               Command="{Binding ClearCommand}" 
+                               Visibility="{Binding CanNotModify, Converter={StaticResource VisibilityConverter}}" 
+                            />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Page>
