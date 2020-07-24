@@ -14,9 +14,6 @@
             <StackPanel 
                 Background="AliceBlue" 
                 Orientation="Vertical">
-                <Label 
-                    BorderBrush="AliceBlue">Status : Connected
-                </Label>
             </StackPanel>
         </Border>
         <Border 
